@@ -1,5 +1,9 @@
+import { analytics } from "@/utils/analytics"
 
-export default function page() {
+export default async function page() {
+
+    const pageview = await analytics.retrieve("pageview", "");
+    
     return 
     (
         <p>
