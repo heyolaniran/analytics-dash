@@ -1,8 +1,10 @@
 "use client"
 import { AnalyticsDashboadProps } from "@/types/types";
 import { BarChart, Card } from "@tremor/react";
+import ReactCountryFlag from "react-country-flag";
+import Badge from "./ui/Badge";
 
-export default function AnalyticsDashboard({avgVisitorsPerDay , amountVisitorsToday, timeSeriesPagesViews} : AnalyticsDashboadProps) { 
+export default function AnalyticsDashboard({avgVisitorsPerDay , amountVisitorsToday, timeSeriesPagesViews, topCountries} : AnalyticsDashboadProps) { 
 
     return (
         <>
@@ -21,6 +23,7 @@ export default function AnalyticsDashboard({avgVisitorsPerDay , amountVisitorsTo
                     <Card className="w-full mx-auto max-w-xs">
                         <p className="text-tremor-default text-tremor-content">
                          Visitors Today 
+                         <Badge percent={(amountVisitorsToday / Number(avgVisitorsPerDay) - 1 )*100} />
                         </p>
                         <p className="text-3xl  font-semibold">
                             {amountVisitorsToday}
@@ -28,6 +31,32 @@ export default function AnalyticsDashboard({avgVisitorsPerDay , amountVisitorsTo
                     </Card>
                 </div>
 
+                <Card className="flex flex-col sm:grid grid-cols-4 gap-6">
+                    <h2 className="text-xl text-black font-semibold text-center w-full">
+                        Weekly Top visitors: 
+                    </h2>
+                    <div className="col-span-3 flex flex-wrap items-center justify-between gap-8">
+                        {topCountries?.map(([countryCode, number ]) => {
+                            return (
+                                <>
+                                    <div className="flex items-center gap-3 text-black font-semobild" key={countryCode}>
+                                        <p className="hidden sm:block">
+                                            {countryCode}
+                                        </p>
+
+                                        <ReactCountryFlag className="text-5xl sm:text-3xl text-black" svg countryCode={countryCode} />
+
+                                        <p className="text-black">
+                                            {number}
+                                        </p>
+                                        
+                                    </div>
+                                </>
+                            )
+                        })}
+                    </div>
+                </Card>
+ 
                 <Card>
 
                     {timeSeriesPagesViews ? (
