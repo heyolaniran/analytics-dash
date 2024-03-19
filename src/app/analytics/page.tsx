@@ -63,6 +63,16 @@ export default async function page() {
         }
     }
 
+
+    // retrieve top five countries 
+
+    const topCountries = [...topVisitorsCountries.entries()].sort((a,b) => {
+        if(a[1] > b[1])
+            return -1 ; 
+        else 
+            return 1
+    }).slice(0,5)
+
     return (
         <>
             <div className="min-h-screen w-full py-12 flex justify-center items-center">
@@ -70,6 +80,7 @@ export default async function page() {
                     <AnalyticsDashboard avgVisitorsPerDay={avgVisitorsPerDay} 
                     amountVisitorsToday={amountVisitorsToday} 
                     timeSeriesPagesViews={pageviews}
+                    topCountries={topCountries}
                     />
                 </div>
             </div>
