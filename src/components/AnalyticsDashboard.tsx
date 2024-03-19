@@ -44,7 +44,7 @@ export default function AnalyticsDashboard({avgVisitorsPerDay , amountVisitorsTo
                                             {countryCode}
                                         </p>
 
-                                        <ReactCountryFlag className="text-5xl sm:text-3xl text-black" svg countryCode={countryCode} />
+                                        <ReactCountryFlag className="text-5xl sm:text-3xl" svg countryCode={countryCode} />
 
                                         <p className="text-black">
                                             {number}
