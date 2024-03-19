@@ -12,4 +12,5 @@ export interface AnalyticsDashboadProps {
     avgVisitorsPerDay : string 
     amountVisitorsToday : number
     timeSeriesPagesViews : Awaited<ReturnType<typeof analytics.retrieveDays>>
+    topCountries: [string, number][]
 }
