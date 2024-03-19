@@ -6,7 +6,7 @@ export default async function page() {
 
     const trackingDays = 7 ; 
 
-    const pageviews = await analytics.retrieveDays("pageview", 2);
+    const pageviews = await analytics.retrieveDays("pageview", 7);
 
     const totalPageViews = pageviews.reduce((acc, curr) => {
         return (
